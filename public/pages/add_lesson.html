@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add lesson</title>
+        <link rel="stylesheet" href="../styles/global.css" />
+        <link rel="stylesheet" href="../styles/add_lesson/style.css" />
+    </head>
+    <body>
+        <div class="updateModal">
+            <div
+                action="http://localhost:3001/lessons/add"
+                method="post"
+                data-aos="fade-down"
+                id="form"
+                class="form"
+            >
+                <a href="/"
+                    ><div class="closeContainer">
+                        <div class="close"></div>
+                    </div>
+                </a>
+                <h3>Add lesson</h3>
+                <br />
+
+                <small>Lesson number</small>
+                <input required type="number" id="lesson_number" />
+                <small>Title</small>
+                <input required type="text" id="title" />
+                <small>Course ID</small>
+                <input required type="number" id="course_id" />
+                <small>Course name</small>
+                <input required type="text" id="course_name" />
+                <small>Video url</small>
+                <input required type="text" id="video_url" />
+
+                <div class="form_row">
+                    <div>
+                        <small>Teacher name</small>
+                        <input required type="text" id="teacher_name" />
+                    </div>
+                    <div>
+                        <small>Teacher avatar</small>
+                        <input required type="text" id="teacher_avatar" />
+                    </div>
+                    <div>
+                        <small>Teacher ocupation</small>
+                        <input required type="text" id="teacher_ocupation" />
+                    </div>
+                </div>
+                
+                <small>Description</small>
+                <textarea id="description"></textarea>
+                
+                <small class='message' id='message'></small>
+                <div class="form_buttons">
+                    <a href="/">CANCELAR </a>
+                    <button id="submit">CONFIRMAR ALTERAÇÕES</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="../scripts/add_lesson/script.js"></script>
+    </body>
+</html>
