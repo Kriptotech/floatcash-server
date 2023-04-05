@@ -1,7 +1,7 @@
 const db = require("../../models/db");
 
-const GetAllConfirmedComitions = async (req, res) => {
-    let sqlSelect = `select * from comitions where is_confirmed = "confirmed";`;
+const GetAllConfirmedMoneyRequests = async (req, res) => {
+    let sqlSelect = `select * from money_requests where is_confirmed = "confirmed";`;
 
     db.query(sqlSelect, (err, result) => {
         if (result.length > 0) {
@@ -12,11 +12,11 @@ const GetAllConfirmedComitions = async (req, res) => {
         } else if (result.length == 0) {
             res.json({
                 result: result,
-                message: "Nenhuma comisão encontrada",
+                message: "Nenhuma requisição de dinheiro/float encontrada",
                 success: false,
             });
         }
     });
 };
 
-module.exports = { GetAllConfirmedComitions };
+module.exports = { GetAllConfirmedMoneyRequests };

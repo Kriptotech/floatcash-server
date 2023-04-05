@@ -1,20 +1,20 @@
 const db = require("../../models/db");
 
-const ConfirmComition = async (req, res) => {
+const ConfirmMoneyRequest = async (req, res) => {
     const { id } = req.body.data;
 
-    let sql = `update comitions set is_confirmed = "confirmed" where id = ${id};`;
+    let sql = `update money_requests set is_confirmed = "confirmed" where id = ${id};`;
 
     db.query(sql, (err, result) => {
         if (err) {
             console.log(err);
             res.json({
-                message: `Falha ao confirmar comissão`,
+                message: `Falha ao confirmar requisição de dinheiro/float`,
                 succes: false,
             });
         } else if (result) {
             res.json({
-                message: `Comissão Confirmada`,
+                message: `Requisição de dinheiro/float Confirmada`,
                 succes: true,
                 result,
             });
@@ -22,4 +22,4 @@ const ConfirmComition = async (req, res) => {
     });
 };
 
-module.exports = { ConfirmComition };
+module.exports = { ConfirmMoneyRequest };

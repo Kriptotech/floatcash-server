@@ -1,7 +1,7 @@
 const db = require("../../models/db");
 
-const GetAllUnconfirmedComitions = async (req, res) => {
-    let sqlSelect = `select * from comitions where is_confirmed = "unconfirmed";`;
+const GetAllUnconfirmedMoneyRequests = async (req, res) => {
+    let sqlSelect = `select * from money_requests where is_confirmed = "unconfirmed";`;
 
     db.query(sqlSelect, (err, result) => {
         if (result.length > 0) {
@@ -19,4 +19,4 @@ const GetAllUnconfirmedComitions = async (req, res) => {
     });
 };
 
-module.exports = { GetAllUnconfirmedComitions };
+module.exports = { GetAllUnconfirmedMoneyRequests };
