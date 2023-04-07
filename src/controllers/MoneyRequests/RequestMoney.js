@@ -20,11 +20,34 @@ const RequestMoney = async (req, res) => {
         db.query(sqlInsert, (err, result) => {
             if (result) {
                 console.log("new money_request added");
-                return res.json({
-                    message: `Pedido de ${
-                        request_type == "money" ? "dinheiro" : "float"
-                    } adicionado`,
-                    success: true,
+
+                let sql = `insert into notifications (maker, maker_id, title, body, type) values('${maker}', '${maker_id}', 'Novo pedido de ${
+                    request_type == "money" ? "dinheiro" : "float"
+                }', '${maker} registrou um novo pedido de ${
+                    request_type == "money" ? "dinheiro" : "float"
+                }', 'money_request');`;
+
+                //inserting a new notification into the database
+                db.query(sql, (err, result) => {
+                    if (result) {
+                        console.log("new money request notification  added");
+
+                        return res.json({
+                            message: `Pedido de ${
+                                request_type == "money" ? "dinheiro" : "float"
+                            } adicionado`,
+                            success: true,
+                        });
+                    }
+                    if (err) {
+                        console.log(err);
+                        return res.json({
+                            message: `Falha ao adicionar pedido de ${
+                                request_type == "money" ? "dinheiro" : "float"
+                            } `,
+                            success: false,
+                        });
+                    }
                 });
             }
             if (err) {

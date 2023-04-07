@@ -19,7 +19,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/check_current_mobile_version", async (req, res) => {
-    let sql = `select current_version from check_mobile_version;`;
+    let sql = `select * from check_mobile_version;`;
 
     db.query(sql, (err, result) => {
         //if there was found anything with the value provided
@@ -32,7 +32,7 @@ app.get("/check_current_mobile_version", async (req, res) => {
         //if there wasn't found anything with the values provided
         else if (!result) {
             res.json({
-                result: result,
+                result: result[0],
                 message: "A pesquisa não deu resultado",
                 succes: false,
             });

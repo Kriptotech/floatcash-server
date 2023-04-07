@@ -5,15 +5,32 @@ const RegisterComition = async (req, res) => {
 
     //if the input values where  provided
     if ((maker && comition_value, maker_id)) {
-        let sqlInsert = `insert into comitions (maker, comition_value, is_confirmed, maker_id) values('${maker}', '${comition_value}',  'unconfirmed', '${maker_id}');`;
+        let sql = `insert into comitions (maker, comition_value, is_confirmed, maker_id) values('${maker}', '${comition_value}',  'unconfirmed', '${maker_id}');`;
 
         //inserting a new comition into the database
-        db.query(sqlInsert, (err, result) => {
+        db.query(sql, (err, result) => {
             if (result) {
                 console.log("new commition added");
-                return res.json({
-                    message: "Comissão adicionada",
-                    success: true,
+
+                let sql = `insert into notifications (maker, maker_id, title, body, type) values('${maker}', '${maker_id}', 'Nova comissão', '${maker} registrou uma nova comissão', 'comition');`;
+
+                //inserting a new notification into the database
+                db.query(sql, (err, result) => {
+                    if (result) {
+                        console.log("new commition notification  added");
+
+                        return res.json({
+                            message: "Comissão adicionada",
+                            success: true,
+                        });
+                    }
+                    if (err) {
+                        console.log(err);
+                        return res.json({
+                            message: "Falha ao adicionar Comissão",
+                            success: false,
+                        });
+                    }
                 });
             }
             if (err) {

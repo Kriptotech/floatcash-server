@@ -14,3 +14,4 @@ require("./Users");
 require("./Comitions");
 require("./CheckMobileVersion");
 require("./MoneyRequests");
+require("./Notifications");

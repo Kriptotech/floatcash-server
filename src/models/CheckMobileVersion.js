@@ -9,6 +9,7 @@ db.query(sql, (err, result) => {
         let sql = `CREATE TABLE check_mobile_version (
             id INT NOT NULL AUTO_INCREMENT,
             current_version TEXT,
+            download_link TEXT,
             PRIMARY KEY (id));`;
 
         db.query(sql, (err, result) => {

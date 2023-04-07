@@ -6,6 +6,8 @@ const getall_agents_route = require("./GetAllAgents");
 const update_userinfo_route = require("./UpdateInfo");
 const delete_user_route = require("./DeleteUser");
 const register_agent_supervisor_route = require("./RegisterAgentSupervisor");
+const get_notifications_route = require("./GetNotifications");
+const delete_notifications_route = require("./DeleteNotifications");
 
 const update_password_route = require("./UpdatePassword");
 const verify_activation_code_route = require("./VerifyActivationCode");
@@ -19,6 +21,8 @@ router.use(get_single_user_info_route);
 router.use(getall_agents_route);
 router.use(update_userinfo_route);
 router.use(delete_user_route);
+router.use(get_notifications_route);
+router.use(delete_notifications_route);
 
 router.use(verify_activation_code_route);
 router.use(update_password_route);

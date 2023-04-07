@@ -1,6 +1,5 @@
 const db = require("../../models/db");
 
-// handle user registation 1
 const GetAllAgents = async (req, res) => {
     let sqlSelect = `select * from users where user_type = "agent";`;
 
