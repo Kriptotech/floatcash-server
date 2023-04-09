@@ -1,8 +1,16 @@
 const db = require("../../models/db");
 
 const RequestMoney = async (req, res) => {
-    const { maker, request_value, maker_id, number_to_receive, request_type } =
-        req.body.data;
+    const {
+        maker,
+        request_value,
+        maker_id,
+        number_to_receive,
+        request_type,
+        request_from,
+        value_to_give,
+        value_to_recieve,
+    } = req.body.data;
 
     //if the input values where  provided
     if (
@@ -10,11 +18,13 @@ const RequestMoney = async (req, res) => {
         request_value &&
         maker_id &&
         number_to_receive &&
-        request_type
+        request_type &&
+        value_to_give &&
+        value_to_recieve
     ) {
-        let sqlInsert = `insert into money_requests (maker, request_value, is_confirmed, maker_id, number_to_receive, request_type) values('${maker}', '${request_value}',  'unconfirmed', '${maker_id}','${number_to_receive}','${
+        let sqlInsert = `insert into money_requests (maker, request_value, is_confirmed, maker_id, number_to_receive, request_type, request_from, value_to_give, value_to_recieve) values('${maker}', '${request_value}',  'unconfirmed', '${maker_id}','${number_to_receive}','${
             request_type == "money" ? "dinheiro" : "float"
-        }');`;
+        }', '${request_from}', '${value_to_give}', '${value_to_recieve}');`;
 
         //inserting a new money_requests into the database
         db.query(sqlInsert, (err, result) => {

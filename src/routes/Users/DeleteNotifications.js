@@ -5,7 +5,7 @@ const DeleteNotifications = async (req, res) => {
     let sql = `delete from notifications;`;
 
     db.query(sql, (err, result) => {
-        console.log("notifications deleted");
+        // console.log("notifications deleted");
     });
 };
 

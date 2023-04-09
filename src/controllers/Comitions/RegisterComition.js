@@ -1,11 +1,12 @@
 const db = require("../../models/db");
 
 const RegisterComition = async (req, res) => {
-    const { maker, comition_value, maker_id } = req.body.data;
+    const { maker, comition_value, request_from, request_format, maker_id } =
+        req.body.data;
 
     //if the input values where  provided
     if ((maker && comition_value, maker_id)) {
-        let sql = `insert into comitions (maker, comition_value, is_confirmed, maker_id) values('${maker}', '${comition_value}',  'unconfirmed', '${maker_id}');`;
+        let sql = `insert into comitions (maker, comition_value, is_confirmed, maker_id, request_from, request_format) values('${maker}', '${comition_value}',  'unconfirmed', '${maker_id}', '${request_from}', '${request_format}');`;
 
         //inserting a new comition into the database
         db.query(sql, (err, result) => {

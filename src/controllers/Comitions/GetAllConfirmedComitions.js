@@ -5,17 +5,23 @@ const GetAllConfirmedComitions = async (req, res) => {
 
     db.query(sqlSelect, (err, result) => {
         if (result.length > 0) {
-            res.json({
+            return res.json({
                 result: result,
                 success: true,
             });
         } else if (result.length == 0) {
-            res.json({
+            return res.json({
                 result: result,
                 message: "Nenhuma comisão encontrada",
                 success: false,
             });
         }
+
+        return res.json({
+            result: result,
+            message: "Nenhuma comisão encontrada",
+            success: false,
+        });
     });
 };
 

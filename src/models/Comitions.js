@@ -10,6 +10,7 @@ db.query(sql, (err, result) => {
             id INT NOT NULL AUTO_INCREMENT,
             maker TEXT,
             maker_id TEXT,
+            request_from TEXT,request_format TEXT,
             is_confirmed TEXT,
             comition_value TEXT,
             PRIMARY KEY (id));`;
