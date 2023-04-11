@@ -20,7 +20,7 @@ db.query(sql, (err, result) => {
             if (result) {
                 console.log("check_mobile_version table Created");
 
-                let sql = `insert into check_mobile_version (current_version) values("1.0.0");`;
+                let sql = `insert into check_mobile_version (current_version) values("1.0.3");`;
 
                 db.query(sql, (err, result) => {
                     if (err) {
